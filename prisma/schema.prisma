@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  password String
+  hashedpassword String
+}
+
+
+model employees {
+id    Int     @unique @id @default(autoincrement()) 
+fullName String
+department String
+createdAt DateTime @default(now())
+updateAt DateTime @updatedAt
+netsalary Int
+deduction Int
+salary Int
+// complains Complain[]
+
+}
+model Complain{
+
+id Int @id @unique
+fulltext String
+}
+
+
+model accounting{
+id Int @id
+description String
+debit String
+credit String
+cost Int
+
+
+}
