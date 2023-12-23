@@ -1,11 +1,14 @@
-import { isEmail, isNotEmpty, isString } from "class-validator";
+import { IsEmail, IsNotEmpty, isString } from "class-validator";
 
 export class Checker{
-@isEmail();
-@isNotEmpty();
-email : string;
-@isString()
-password :String
 
+@IsEmail()
+@IsNotEmpty()
+email : string;
+
+password :string
+
+
+repeatpassword: string
 
 }

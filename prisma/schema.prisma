@@ -5,16 +5,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+
+url = "postgres://public_8mdm_user:GnvqNIRBIgVYMTMiKuemTeeIRW0nXgAV@dpg-cm1c3q21hbls73agfmvg-a.oregon-postgres.render.com/public_8mdm"
 }
 
-model User {
+model users {
   id    Int     @id @default(autoincrement())
   email String  @unique
+  
   password String
-  hashedpassword String
 }
 
 
