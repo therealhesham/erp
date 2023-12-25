@@ -6,10 +6,12 @@ import { AccountingService } from './accounting/accounting.service';
 import { AccountingModule } from './accounting/accounting.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { CreateuserModule } from './createuser/createuser.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './nest/auth/auth.service';
 
 @Module({
-  imports: [AccountingModule, PrismaModule, CreateuserModule],
+  imports: [AccountingModule, PrismaModule, CreateuserModule, AuthModule],
   controllers: [AppController, AccountingController],
-  providers: [AppService, AccountingService],
+  providers: [AppService, AccountingService, AuthService],
 })
 export class AppModule {}
