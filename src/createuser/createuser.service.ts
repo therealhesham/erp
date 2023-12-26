@@ -21,7 +21,7 @@ const hashedpassword : any =   await bcrypt.hash(body.password ,10)
 try {
    const donedata = await prisma.users.create({data:{email:body.email,password:hashedpassword}})
 
-return {access_token:await this.JwtService.signAsync(donedata)};
+return {access_token:await this.JwtService.signAsync({email:body.email})};
 } catch (error) {
     return error.meta.target;
 }
