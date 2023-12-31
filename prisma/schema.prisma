@@ -15,36 +15,42 @@ url = "postgres://public_8mdm_user:GnvqNIRBIgVYMTMiKuemTeeIRW0nXgAV@dpg-cm1c3q21
 model users {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  
+  nationalid String 
   password String
 }
 
 
 model employees {
 id    Int     @unique @id @default(autoincrement()) 
-fullName String
+fullName String @unique
 department String
+nationalid Int 
 createdAt DateTime @default(now())
 updateAt DateTime @updatedAt
+// netsalary Int
+// deduction Int
+// overtime Int
+// grossSalary Int
+
+hiringDate DateTime 
+skills String[]
 netsalary Int
-deduction Int
-salary Int
-// complains Complain[]
+cvLink String
+complains Complain[]
 
 }
 model Complain{
 
-id Int @id @unique
+id Int @id @unique @default(autoincrement())
 fulltext String
+emplyee employees @relation(references: [id],fields: [emplyeeId])
+emplyeeId Int
 }
 
 
-model accounting{
-id Int @id
-description String
-debit String
-credit String
-cost Int
-
+model department {
+id Int @id @unique @default(autoincrement()) 
+depname String @unique
+manager String 
 
 }
